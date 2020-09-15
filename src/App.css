@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.rarity {
+  position: absolute;
+  align-content: center;
+  background: white;
+  display: inline-block;
+  width: 100%;
+}

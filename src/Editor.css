@@ -1,0 +1,78 @@
+.container {
+    background: #343434;
+    text-align: center;
+    width: 100vw;
+    height: auto;
+}
+.fields-container {
+    background: #282c34;
+    width: 400px;
+    float: left;
+    margin: 25px;
+    padding: 25px;
+}
+
+.FormField {
+    text-align: left;
+}
+
+.card-container {
+    background: chartreuse;
+    width: 400px;
+    float: left;
+    margin: 25px;
+}
+.icon {
+    background: green;
+    height: 50px;
+    width: 50px;
+    textAlign: center;
+    float: left;
+}
+.attack {
+    background: red;
+    height: 50px;
+    width: 50px;
+    textAlign: center;
+    float: left;
+}
+.health {
+    background: blue;
+    height: 50px;
+    width: 50px;
+    textAlign: center;
+    float: right;
+}
+.image {
+    height: 400px;
+    width: 400px;
+    float: left;
+}
+.description {
+    background: gray;
+    height: 100px;
+    width: 400px;
+    textAlign: center;
+    float: left;
+}
+.name {
+    background: #61dafb;
+    height: 50px;
+    width: 300px;
+    textAlign: center;
+    float: left;
+}
+.movement {
+    background: gray;
+    height: 50px;
+    width: 50px;
+    textAlign: center;
+    float: left;
+}
+input {
+    margin: 5px;
+}
+label {
+    color: white;
+}
+
