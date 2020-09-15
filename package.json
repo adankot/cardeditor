@@ -1,4 +1,5 @@
 {
+  "homepage": "https://adankot.github.io/cardeditor",
   "name": "cardeditor",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "canvas2image": "^1.0.5",
     "file-saver": "^2.0.2",
+    "gh-pages": "^3.1.0",
     "html2canvas": "^1.0.0-rc.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -18,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
