@@ -24,47 +24,53 @@ class Editor extends React.Component {
 			<div className="container">
 				<div className="fields-container">
 					<form>
-						<div className="FormField">
-							<label>Name</label>
+						<div className="FormFieldTopLeft">
+						<div className="rowContainer">
+							<label className="labelTop">Name</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Cost</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Type</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Image URL</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Attack</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Health</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Movement</label></div>
+							<div className="rowContainer">
+							<label className="labelTop">Description</label></div>
+						</div>
+					 	<div className="FormFieldTopRight">
+							<div className="rowContainer">
 							<input id="card-name" className="FormText"
-							       onChange={event => this.setState({ name: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Cost</label>
+									 	onChange={event => this.setState({ name: event.target.value })}/></div>
+							<div className="rowContainer">
 							<input id="card-cost" className="FormText"
-							       onChange={event => this.setState({ cost: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Type</label>
-							<input id="card-type" className="FormText"
-							       onChange={event => this.setState({ type: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Image URL</label>
-							<input id="card-image" className="FormText"
-							       onChange={event => this.setState({ image: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Description</label>
-							<input id="card-description" className="FormText"
-							       onChange={event => this.setState({ description: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Attack</label>
-							<input id="card-attack" className="FormText"
-							       onChange={event => this.setState({ attack: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Health</label>
-							<input id="card-health" className="FormText"
-							       onChange={event => this.setState({ health: event.target.value })}/>
-						</div>
-						<div className="FormField">
-							<label>Movement</label>
-							<input id="card-movement" className="FormText"
-							       onChange={event => this.setState({ movement: event.target.value })}/>
-						</div>
-						<div className="FormField">
+							     	onChange={event => this.setState({ cost: event.target.value })}/></div>
+											<div className="rowContainer">
+			 				<input id="card-type" className="FormText"
+			 						 	onChange={event => this.setState({ type: event.target.value })}/></div>
+											<div className="rowContainer">
+			 				<input id="card-name" className="FormText"
+			 							onChange={event => this.setState({ image: event.target.value })}/></div>
+											<div className="rowContainer">
+			 				<input id="card-cost" className="FormText"
+			 							onChange={event => this.setState({ attack: event.target.value })}/></div>
+											<div className="rowContainer">
+			 			 	<input id="card-type" className="FormText"
+			 			 				onChange={event => this.setState({ health: event.target.value })}/></div>
+											<div className="rowContainer">
+			 			 	<input id="card-type" className="FormText"
+			 			 				onChange={event => this.setState({ movement: event.target.value })}/></div>
+							<textarea id="card-description" className="formTextfield"
+										onChange={event => this.setState({ description: event.target.value })}/>
+							<div style={{
+							  height: "40px",
+							  display: "flex",
+							  alignItems: "center",
+							float: "right"}}>
 							<button id="download" onClick={
 								(e) => {
 									e.preventDefault();
@@ -80,6 +86,7 @@ class Editor extends React.Component {
 							}>
 								Save
 							</button>
+							</div>
 						</div>
 					</form>
 				</div>

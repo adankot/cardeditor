@@ -4,6 +4,7 @@
     width: 100vw;
     height: auto;
 }
+
 .fields-container {
     background: #282c34;
     width: 400px;
@@ -12,8 +13,24 @@
     padding: 25px;
 }
 
-.FormField {
-    text-align: left;
+.labelTop {
+  text-align: left;
+}
+
+.rowContainer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.FormFieldTopLeft {
+    width: 100px;
+    float: left;
+}
+
+.FormFieldTopRight {
+    width: 300px;
+    float: left;
 }
 
 .card-container {
@@ -22,6 +39,16 @@
     float: left;
     margin: 25px;
 }
+
+.formTextfield {
+  width: 293px;
+  max-width: 293px;
+  padding: 0px;
+  margin-left: 5px;
+  resize: vertical;
+  min-height: 50px;
+}
+
 .icon {
     background: green;
     height: 50px;
@@ -29,6 +56,7 @@
     textAlign: center;
     float: left;
 }
+
 .attack {
     background: red;
     height: 50px;
@@ -36,6 +64,7 @@
     textAlign: center;
     float: left;
 }
+
 .health {
     background: blue;
     height: 50px;
@@ -43,18 +72,22 @@
     textAlign: center;
     float: right;
 }
+
 .image {
     height: 400px;
     width: 400px;
     float: left;
 }
+
 .description {
-    background: gray;
+    background: grey;
     height: 100px;
     width: 400px;
     textAlign: center;
     float: left;
+    word-break: break-word;
 }
+
 .name {
     background: #61dafb;
     height: 50px;
@@ -62,6 +95,7 @@
     textAlign: center;
     float: left;
 }
+
 .movement {
     background: gray;
     height: 50px;
@@ -69,10 +103,11 @@
     textAlign: center;
     float: left;
 }
+
 input {
     margin: 5px;
 }
+
 label {
     color: white;
 }
-
