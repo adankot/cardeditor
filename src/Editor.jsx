@@ -20,18 +20,6 @@ class Editor extends React.Component {
 	}
 
 	render() {
-
-		const onSave = () => {
-			html2canvas(this.cardRef.current)
-				.then((canvas) => {
-					console.log('MENTÉS', this.cardRef.current);
-					const newImage = canvas.toDataURL('image/png');
-					return saveAs(newImage, `${this.state.name}.png`);
-				}).catch(err => {
-				console.log('err: ', err);
-			});
-		};
-
 		return (
 			<div className="container">
 				<div className="fields-container">
@@ -77,7 +65,19 @@ class Editor extends React.Component {
 							       onChange={event => this.setState({ movement: event.target.value })}/>
 						</div>
 						<div className="FormField">
-							<button id="download" onClick={onSave}>
+							<button id="download" onClick={
+								(e) => {
+									e.preventDefault();
+									html2canvas(this.cardRef.current)
+										.then((canvas) => {
+											console.log('MENTÉS', this.cardRef.current);
+											const newImage = canvas.toDataURL('image/png');
+											return saveAs(newImage, `${this.state.name}.png`);
+										}).catch(err => {
+										console.log('err: ', err);
+									});
+								}
+							}>
 								Save
 							</button>
 						</div>
