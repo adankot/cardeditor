@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/cardeditor/static/css/main.a00df7ff.chunk.css",
-    "main.js": "/cardeditor/static/js/main.10c02898.chunk.js",
-    "main.js.map": "/cardeditor/static/js/main.10c02898.chunk.js.map",
+    "main.css": "/cardeditor/static/css/main.2b0ecf50.chunk.css",
+    "main.js": "/cardeditor/static/js/main.09c73ad5.chunk.js",
+    "main.js.map": "/cardeditor/static/js/main.09c73ad5.chunk.js.map",
     "runtime-main.js": "/cardeditor/static/js/runtime-main.827676e4.js",
     "runtime-main.js.map": "/cardeditor/static/js/runtime-main.827676e4.js.map",
     "static/js/2.38f79b89.chunk.js": "/cardeditor/static/js/2.38f79b89.chunk.js",
     "static/js/2.38f79b89.chunk.js.map": "/cardeditor/static/js/2.38f79b89.chunk.js.map",
     "index.html": "/cardeditor/index.html",
-    "precache-manifest.22e874a6c123a45c37ad80e9e9eeeb59.js": "/cardeditor/precache-manifest.22e874a6c123a45c37ad80e9e9eeeb59.js",
+    "precache-manifest.00a7bb1ecb3b2f19da8b101bb029bcae.js": "/cardeditor/precache-manifest.00a7bb1ecb3b2f19da8b101bb029bcae.js",
     "service-worker.js": "/cardeditor/service-worker.js",
-    "static/css/main.a00df7ff.chunk.css.map": "/cardeditor/static/css/main.a00df7ff.chunk.css.map",
+    "static/css/main.2b0ecf50.chunk.css.map": "/cardeditor/static/css/main.2b0ecf50.chunk.css.map",
     "static/js/2.38f79b89.chunk.js.LICENSE": "/cardeditor/static/js/2.38f79b89.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.827676e4.js",
     "static/js/2.38f79b89.chunk.js",
-    "static/css/main.a00df7ff.chunk.css",
-    "static/js/main.10c02898.chunk.js"
+    "static/css/main.2b0ecf50.chunk.css",
+    "static/js/main.09c73ad5.chunk.js"
   ]
 }

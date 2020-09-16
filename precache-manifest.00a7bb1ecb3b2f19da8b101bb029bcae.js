@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3dcc845486990d47bcdc24d56d2bd398",
+    "revision": "f572dfc7c69535e6303c13b142a24f22",
     "url": "/cardeditor/index.html"
   },
   {
-    "revision": "548cb28a39407034b63f",
-    "url": "/cardeditor/static/css/main.a00df7ff.chunk.css"
+    "revision": "06e5313cbebb710f73b8",
+    "url": "/cardeditor/static/css/main.2b0ecf50.chunk.css"
   },
   {
     "revision": "ecb4f271ffd8850a1613",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cardeditor/static/js/2.38f79b89.chunk.js.LICENSE"
   },
   {
-    "revision": "548cb28a39407034b63f",
-    "url": "/cardeditor/static/js/main.10c02898.chunk.js"
+    "revision": "06e5313cbebb710f73b8",
+    "url": "/cardeditor/static/js/main.09c73ad5.chunk.js"
   },
   {
     "revision": "636a2432e7956220e7ff",
