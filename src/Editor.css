@@ -88,6 +88,14 @@
     word-break: break-word;
 }
 
+.card-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0;
+}
+
 .name {
     background: #61dafb;
     height: 50px;

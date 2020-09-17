@@ -2,6 +2,7 @@ import React from 'react';
 import './Editor.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
+import axios from 'axios';
 
 class Editor extends React.Component {
 	constructor(props) {
@@ -12,6 +13,7 @@ class Editor extends React.Component {
 			description: '',
 			type: '',
 			image: '',
+			image_data: '',
 			attack: '',
 			health: '',
 			movement: ''
@@ -19,7 +21,23 @@ class Editor extends React.Component {
 		this.cardRef = React.createRef();
 	}
 
+	getImage(input) {
+		this.setState({ image: input })
+
+		if (input !== undefined && input.length > 10) { // @TODO: URL CHECK
+			const res = axios
+				.get(input, { responseType: 'arraybuffer' })
+				.then(response => Buffer.from(response.data, 'binary').toString('base64') )
+				.then(data => this.setState({ image_data: data }))
+				.catch(err => {
+					console.log('err: ', err)
+			})
+		}
+	}
+
 	render() {
+		const image_data = `data:image/png;base64, ${this.state.image_data}`;
+
 		return (
 			<div className="container">
 				<div className="fields-container">
@@ -54,7 +72,7 @@ class Editor extends React.Component {
 			 						 	onChange={event => this.setState({ type: event.target.value })}/></div>
 											<div className="rowContainer">
 			 				<input id="card-name" className="FormText"
-			 							onChange={event => this.setState({ image: event.target.value })}/></div>
+			 							onChange={event => this.getImage(event.target.value)}/></div>
 											<div className="rowContainer">
 			 				<input id="card-cost" className="FormText"
 			 							onChange={event => this.setState({ attack: event.target.value })}/></div>
@@ -92,12 +110,7 @@ class Editor extends React.Component {
 				</div>
 				<div className="card-container" ref={this.cardRef}>
 					<div id="card">
-						<div className="image" id="card-image" style={{
-							backgroundImage: `url(${this.state.image})`,
-							backgroundSize: "cover",
-							backgroundPosition: "center center"
-						}}>
-						</div>
+						<img className="card-image" src={image_data} />
 						<div className="icon">
 							<div>
 								{this.state.cost}
