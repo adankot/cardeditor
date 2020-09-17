@@ -3,6 +3,7 @@ import './Editor.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
+import Draggable from "react-draggable";
 
 class Editor extends React.Component {
 	constructor(props) {
@@ -16,7 +17,8 @@ class Editor extends React.Component {
 			image_data: '',
 			attack: '',
 			health: '',
-			movement: ''
+			movement: '',
+			rarity: ''
 		};
 		this.cardRef = React.createRef();
 	}
@@ -58,6 +60,8 @@ class Editor extends React.Component {
 							<div className="rowContainer">
 							<label className="labelTop">Movement</label></div>
 							<div className="rowContainer">
+							<label className="labelTop">Rarity</label></div>
+							<div className="rowContainer">
 							<label className="labelTop">Description</label></div>
 						</div>
 					 	<div className="FormFieldTopRight">
@@ -82,6 +86,9 @@ class Editor extends React.Component {
 											<div className="rowContainer">
 			 			 	<input id="card-type" className="FormText"
 			 			 				onChange={event => this.setState({ movement: event.target.value })}/></div>
+											<div className="rowContainer">
+			 			 	<input id="card-type" className="FormText"
+			 			 				onChange={event => this.setState({ rarity: event.target.value })}/></div>
 							<textarea id="card-description" className="formTextfield"
 										onChange={event => this.setState({ description: event.target.value })}/>
 							<div style={{
@@ -110,43 +117,65 @@ class Editor extends React.Component {
 				</div>
 				<div className="card-container" ref={this.cardRef}>
 					<div id="card">
-						<img className="card-image" src={image_data} />
+						<Draggable grid={ [50, 50]}>
+							<img className="card-image" src={image_data} />
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="icon">
 							<div>
 								{this.state.cost}
 							</div>
 						</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="name">
 							<div>
 								{this.state.name}
 							</div>
 						</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="icon">
 							<div>
 								{this.state.type}
 							</div>
 						</div>
-						<div className="rarity">O</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
+						<div className="icon">
+							<div className="rarity">
+								{this.state.rarity}
+							</div>
+						</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="description">
 							<div>
 								{this.state.description}
 							</div>
 						</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="attack">
 							<div>
 								{this.state.attack}
 							</div>
 						</div>
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
 						<div className="movement">
 							<div>
 								{this.state.movement}
 							</div>
 						</div>
-						<div className="health">
-							<div>
-								{this.state.health}
+						</Draggable>
+						<Draggable grid={ [50, 50]}>
+							<div className="health">
+								<div>
+									{this.state.health}
+								</div>
 							</div>
-						</div>
+						</Draggable>
 					</div>
 				</div>
 			</div>
