@@ -3,7 +3,30 @@ import './Editor.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
-import Draggable from "react-draggable";
+import DraggableCore from "react-draggable";
+
+const itemType = {
+	"One Block": "oneBlock",
+	"Two Long Block": "twoBlock",
+	"Three Long Block": "threeBlock",
+	"Four Long Block": "fourBlock",
+	"Five Long Block": "fiveBlock",
+	"Six Long Block": "sixBlock",
+	"Seven Long Block": "sevenBlock",
+	"Eight Long Block": "eightBlock",
+	"Double Row Block": "doubleBlock"
+}
+
+const itemValue = {
+	"Name": "name",
+	"Cost": "cost",
+	"Type": "type",
+	"Attack": "attack",
+	"Health": "health",
+	"Movement": "movement",
+	"Rarity": "rarity",
+	"Description": "description"
+}
 
 class Editor extends React.Component {
 	constructor(props) {
@@ -18,7 +41,11 @@ class Editor extends React.Component {
 			attack: '',
 			health: '',
 			movement: '',
-			rarity: ''
+			rarity: '',
+			typeSelectionText: "Type Selection",
+			valueSelectionText: "Value Selection",
+			itemsList: [],
+			itemCounter: 0
 		};
 		this.cardRef = React.createRef();
 	}
@@ -37,6 +64,29 @@ class Editor extends React.Component {
 		}
 	}
 
+	getDropdownTypeElement (type) {
+		return <a onClick={(e) => {
+			this.setState({ typeSelectionText: type })
+		}}>
+			{ type }
+		</a>;
+	}
+
+	getDropdownValueElement (value) {
+		return <a onClick={(e) => {
+			this.setState({ valueSelectionText: value })
+		}}>
+			{ value }
+		</a>;
+	}
+
+	getNewBlock (value, type, keyValue) {
+		this.setState({ itemsList: [
+			...this.state.itemsList,
+			{ value,type,keyValue }
+		]});
+	}
+
 	render() {
 		const image_data = `data:image/png;base64, ${this.state.image_data}`;
 
@@ -45,7 +95,7 @@ class Editor extends React.Component {
 				<div className="fields-container">
 					<form>
 						<div className="FormFieldTopLeft">
-						<div className="rowContainer">
+							<div className="rowContainer">
 							<label className="labelTop">Name</label></div>
 							<div className="rowContainer">
 							<label className="labelTop">Cost</label></div>
@@ -96,7 +146,7 @@ class Editor extends React.Component {
 							  display: "flex",
 							  alignItems: "center",
 							float: "right"}}>
-							<button id="download" onClick={
+							<button id="download" className="dropdown-button" style={{ backgroundColor: "#e74c3c"}} onClick={
 								(e) => {
 									e.preventDefault();
 									html2canvas(this.cardRef.current)
@@ -113,74 +163,99 @@ class Editor extends React.Component {
 							</button>
 							</div>
 						</div>
+
+						<div className="dropdown" style={{ marginRight: "40px", marginTop: "20px" }}>
+  						<button className="dropdown-button" style={{ pointerEvents: "none" }}> {this.state.typeSelectionText} </button>
+  							<div className="dropdown-content">
+									{ this.getDropdownTypeElement("One Block") }
+									{ this.getDropdownTypeElement("Two Long Block") }
+									{ this.getDropdownTypeElement("Three Long Block") }
+									{ this.getDropdownTypeElement("Four Long Block") }
+									{ this.getDropdownTypeElement("Five Long Block") }
+									{ this.getDropdownTypeElement("Six Long Block") }
+									{ this.getDropdownTypeElement("Eight Long Block") }
+									{ this.getDropdownTypeElement("Seven Long Block") }
+									{ this.getDropdownTypeElement("Double Row Block") }
+  							</div>
+						</div>
+
+						<div className="dropdown">
+  						<button className="dropdown-button" style={{ pointerEvents: "none" }}> {this.state.valueSelectionText} </button>
+  							<div className="dropdown-content">
+									{ this.getDropdownValueElement("Name") }
+									{ this.getDropdownValueElement("Cost") }
+									{ this.getDropdownValueElement("Type") }
+									{ this.getDropdownValueElement("Attack") }
+									{ this.getDropdownValueElement("Health") }
+									{ this.getDropdownValueElement("Movement") }
+									{ this.getDropdownValueElement("Rarity") }
+									{ this.getDropdownValueElement("Description") }
+  							</div>
+						</div>
+
+						<button className="dropdown-button" style={{ position: "relative", width: "80px", marginLeft: "40px", paddinTop: "20px"}} onClick={
+							(e) => {
+								e.preventDefault();
+								this.setState({ itemCounter: this.state.itemCounter + 1 });
+								{ this.getNewBlock( itemValue[this.state.valueSelectionText], this.state.typeSelectionText, "newItem_" + this.state.itemCounter ) }
+							}
+						}>
+							Build
+						</button>
+
 					</form>
 				</div>
+
 				<div className="card-container" ref={this.cardRef}>
 					<div id="card">
-						<Draggable grid={ [50, 50]}>
-							<img className="card-image" src={image_data} />
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="icon">
-							<div>
-								{this.state.cost}
-							</div>
+						<DraggableCore grid={ [50, 50]}>
+						<div style={{height: "500px", width: "400px"}}>
+							<img className="card-image" src={image_data} /></div>
+						</DraggableCore>
+						<div>
+							{ this.state.itemsList
+									.map(({value, type, keyValue}) =>
+										<ItemSuper removeMe={() => {this.setState({itemsList: this.state.itemsList.filter(x => x.keyValue !== keyValue)})}}
+										   type={ itemType[type]} value={this.state[value]} key={keyValue}/>
+							)}
 						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="name">
-							<div>
-								{this.state.name}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="icon">
-							<div>
-								{this.state.type}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="icon">
-							<div className="rarity">
-								{this.state.rarity}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="description">
-							<div>
-								{this.state.description}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="attack">
-							<div>
-								{this.state.attack}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-						<div className="movement">
-							<div>
-								{this.state.movement}
-							</div>
-						</div>
-						</Draggable>
-						<Draggable grid={ [50, 50]}>
-							<div className="health">
-								<div>
-									{this.state.health}
-								</div>
-							</div>
-						</Draggable>
 					</div>
 				</div>
+
+				<div className="remove-container"/>
+
 			</div>
 		);
 	};
 };
+
+class ItemSuper extends React.Component {
+	constructor(props) {
+		super(props);
+		this.randomColor = Math.floor(Math.random()*16777215).toString(16);
+	}
+
+	onRelease = (e, position) => {
+    const x = position.lastX;
+		if (x > 400) {
+			this.props.removeMe();
+			return false;
+		} else {
+			return true;
+		}
+  };
+
+	render() {
+		 return (
+			 <DraggableCore onStop={this.onRelease} grid={ [50, 50]}>
+			 	<div>
+					<div className={ this.props.type } style={{ background: "#" + this.randomColor }}>
+						{ this.props.value }
+					</div>
+				</div>
+			</DraggableCore>
+		);
+	}
+}
 
 export default Editor;
